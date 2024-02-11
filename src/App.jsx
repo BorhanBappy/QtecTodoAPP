@@ -88,7 +88,7 @@ function App() {
               <Priority Todo={completedTodos} />
             </div>
           </div>
-          <div className="flex flex-col justify-between items-center md:flex-row  p-4 text-2xl text-[#20A6DF]">
+          <div className="flex flex-col justify-center gap-4 md:gap-52 items-center md:flex-row  p-4 text-2xl text-[#20A6DF]">
             <h1>Total Task {todos.length}</h1>
             <h1>Complete Task {completedTodos.length}</h1>
           </div>
