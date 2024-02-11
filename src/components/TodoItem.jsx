@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useTodo } from '../contexts/TodoContext';
-import clsx from 'clsx'; // Import clsx
+import React, { useState } from "react";
+import { useTodo } from "../contexts/TodoContext";
+import { MdDelete } from "react-icons/md";
+import { TfiWrite } from "react-icons/tfi";
+import clsx from "clsx"; // Import clsx
 
 function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
@@ -18,18 +20,18 @@ function TodoItem({ todo }) {
 
   // Define priority colors
   const priorityColors = {
-    low: 'text-green-500',
-    medium: 'text-yellow-500',
-    high: 'text-red-500',
+    low: "text-green-500",
+    medium: "text-yellow-500",
+    high: "text-red-500",
   };
 
   return (
     <div
       className={clsx(
-        'flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300 text-black',
+        "flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300 text-black",
         {
-          'bg-white': todo.completed, // White background for completed todos
-          'bg-white': !todo.completed, // White background for incomplete todos
+          "bg-white": todo.completed && !isTodoEditable, // White background for incomplete todos when not being edited
+          "bg-black": isTodoEditable, // Gray background when being edited
         }
       )}
     >
@@ -42,11 +44,11 @@ function TodoItem({ todo }) {
       <input
         type="text"
         className={clsx(
-          'border outline-none w-full bg-transparent rounded-lg',
+          "border outline-none w-full bg-transparent rounded-lg",
           {
-            'border-black/10 px-2': isTodoEditable,
-            'border-transparent': !isTodoEditable,
-            'line-through': todo.completed,
+            "border-black/10 px-2": isTodoEditable,
+            "border-transparent": !isTodoEditable,
+            "line-through": todo.completed,
             [priorityColors[todo.priority]]: true,
           }
         )}
@@ -57,7 +59,7 @@ function TodoItem({ todo }) {
       {/* Edit, Save Button */}
       <button
         className={clsx(
-          'inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50'
+          "inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
         )}
         onClick={() => {
           if (todo.completed) return;
@@ -68,16 +70,16 @@ function TodoItem({ todo }) {
         }}
         disabled={todo.completed}
       >
-        {isTodoEditable ? '📁' : '✏️'}
+        {isTodoEditable ? "📁" : <TfiWrite/>}
       </button>
       {/* Delete Todo Button */}
       <button
         className={clsx(
-          'inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0'
+          "inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
         )}
         onClick={() => deleteTodo(todo.id)}
       >
-        ❌
+        <MdDelete />
       </button>
     </div>
   );
