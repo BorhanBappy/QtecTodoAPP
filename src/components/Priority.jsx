@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem";
 export default function Priority({ Todo }) {
   const [filterPriority, setFilterPriority] = useState("all"); // State to track the selected priority filter
   // Filter todos based on selected priority
-  console.log(Todo);
+//   console.log(Todo);
   // eslint-disable-next-line react/prop-types
   const filteredTodos = Todo.filter((todo) => {
     if (filterPriority === "all") return true; // Show all todos if no filter is selected
@@ -16,7 +16,7 @@ export default function Priority({ Todo }) {
   const handlePriorityFilterChange = (e) => {
     setFilterPriority(e.target.value);
   };
-  console.log(filteredTodos);
+//   console.log(filteredTodos);
   return (
     <div>
       <select
