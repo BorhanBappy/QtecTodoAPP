@@ -1,40 +1,36 @@
-# Task: Todo List App
+# Todo List App
 
+This Todo List application allows users to manage their tasks efficiently by providing features to add, edit, delete, and mark tasks as complete. It offers a clean and intuitive user interface built using React and styled with Tailwind CSS.
 
-## Uses Tools and Technology
-* React
-* Tailwind
-* clsx (This used for conditional styling that can easy to color management)
+## Features
+
+- **Add Todo**: Users can easily add new tasks by entering the task message and selecting the priority level (low, medium, or high).
   
-## Context Section
-* Import two file createContext, useContext.
-* Here Context API is used in this project to manage the state related to todos in a centralized manner and make it accessible to all components that need it, without the need to pass props down through multiple levels of the component tree.
-## TodoFrom
-* Here basic from that have that have two property one input another priority. then Add Button.
-* addTodo there are three property that are
+- **Edit Todo**: Existing tasks can be edited to update their message.
   
-```javascript
-const add = (e) => {
-    e.preventDefault();
+- **Delete Todo**: Users can remove tasks from the list when they are no longer needed.
+  
+- **Complete Todo**: Tasks can be marked as complete, and they are visually differentiated from incomplete tasks.
+  
+- **Local Storage**: Todos are persisted in the browser's local storage, allowing users to access their tasks across sessions.
+  
+- **Priority Management**: Todos are categorized by priority level (low, medium, or high), providing users with better task organization.
+  
+- **Task Statistics**: The application displays statistics such as the total number of tasks and the number of completed tasks, giving users an overview of their progress.
 
-    if (!todo) return;
+## Components
 
-    // Add todo with priority
-    addTodo({ todo, priority, completed: false });
-    
-    // Reset input fields
-    setTodo("");
-    setPriority("low");
-  };
-```
-## TodoItem 
-### Description
-The TodoItem component represents an individual todo item within a todo list. It offers functionality to toggle the completion status of the todo, edit the todo message, and delete the todo.
+### TodoForm
+Component for adding new todos. It provides a form with input fields for the task message and priority level selection.
 
-### Props
-* todo: An object representing the todo item. It should have the following structure:
-* id: Unique identifier for the todo item.
-* todo: String containing the todo message.
-* completed: Boolean indicating the completion status of the todo.
-* priority: String indicating the priority level of the todo. Possible values are "low", "medium", or "high".
+### TodoItem
+Component representing an individual todo item. It allows users to edit, delete, and mark todos as complete.
+
+### Priority
+Component for displaying todos grouped by their priority level.
+
+## Technologies Used
+
+- React
+- Tailwind CSS
 
