@@ -47,6 +47,14 @@ function App() {
   const incompleteTodos = todos.filter((todo) => !todo.completed);
   const completedTodos = todos.filter((todo) => todo.completed);
 
+  // low: "text-green-500",
+  // medium: "text-yellow-500",
+  // high: "text-red-500",
+
+  const lcolor = <button className=" bg-green-500 rounded-lg">Green</button>;
+  const mcolor = <button className=" bg-yellow-500 rounded-lg">Green</button>;
+  const hcolor = <button className=" bg-red-500 rounded-lg">Green</button>;
+
   return (
     <TodoProvider
       value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}
@@ -57,10 +65,11 @@ function App() {
             Todo List App
           </h1>
           <div className="flex flex-col sm:flex-row  justify-between p-4">
-            <h1>Low Priority: color-</h1>
-            <h1>Medium Priority : color-</h1>
-            <h1>High Priority: color-</h1>
+            <h1>Low Priority: color-{lcolor}</h1>
+            <h1>Medium Priority : color-{mcolor}</h1>
+            <h1>High Priority: color-{hcolor}</h1>
           </div>
+
           <div className="mb-4">
             {/* Todo form goes here */}
             <TodoForm />
