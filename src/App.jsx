@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { TodoProvider } from "./contexts";
 import { TodoForm, TodoItem } from "./components";
 
@@ -28,6 +28,18 @@ function App() {
       )
     );
   };
+//Local Storage 
+  useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"))
+
+    if (todos && todos.length > 0) {
+      setTodos(todos)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
 
   // Filter completed and incomplete todos
   const incompleteTodos = todos.filter((todo) => !todo.completed);
@@ -59,7 +71,7 @@ function App() {
             {/* Todo form goes here */}
             <TodoForm />
           </div>
-          <div className="flex flex-col gap-6 justify-center md:flex-row items-center ">
+          <div className="flex flex-col gap-6 justify-center md:flex-row ">
             <div className=" w-1/2">
               <h2 className="text-lg font-bold mb-2 text-center">
                 Incomplete Tasks
